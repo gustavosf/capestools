@@ -2,7 +2,7 @@
 
 // Operações relativas as instituições de ensino superior (IES)
 
-/* Listagem de todas as instituições de ensino
+/** Listagem de todas as instituições de ensino
  */
 Router::get('ies/list', function() {
 	$dbh =& DB::handler();
@@ -10,9 +10,9 @@ Router::get('ies/list', function() {
 	Router::dispose($result);
 });
 
-/* Informações sobre uma instituição de ensino em particular
+/** Informações sobre uma instituição de ensino em particular
  * 
- * int	id	Número de identificação da instituição de ensino no BD
+ * int id * Número de identificação da instituição de ensino no BD
  */
 Router::get('ies/:id', function($id) {
 	$dbh =& DB::handler();
