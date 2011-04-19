@@ -41,10 +41,10 @@ class Router {
         $method = strtoupper($method);
         foreach (self::$routes[$method] as $route) {
             if (preg_match("/{$route['route']}/i", $url, $match)) {
-                array_shift($match);
-                $match = array_combine($route['vars'], $match);
+				array_shift($match);
+				if (sizeof($match)) 
+	                $match = array_combine($route['vars'], $match);
                 call_user_func_array($route['fn'], $match);
-                // do something!
             }
         }
         // route to default or (404)

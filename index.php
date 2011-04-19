@@ -11,6 +11,6 @@ require 'routes.php';
 $path = trim($_SERVER['PATH_INFO'], '/');
 $method = $_SERVER['REQUEST_METHOD'];
 
-Router::route($path);
+Router::route($method, $path);
 
 ?>
