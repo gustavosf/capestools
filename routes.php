@@ -11,3 +11,5 @@
  * Router::post('eval/:id', 'Classe::metodo');
  *
  **/
+
+require APL_DIR.'/ies.php';
