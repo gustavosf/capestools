@@ -13,3 +13,4 @@ define('DB_PASSWORD', 'toor');
 define('BASE_PATH','http://dev/capestools/');
 
 define('LIB_DIR', dirname(dirname(__FILE__)) . '/lib');
+define('APL_DIR', dirname(dirname(__FILE__)) . '/apl');
