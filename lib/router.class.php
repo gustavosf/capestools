@@ -5,6 +5,11 @@ class Router {
     static $routes = array();
 
     // route public setters
+	/** Funções auxiliares para cadastro de rotas
+	 *
+	 * string   route * rota descrita conforme padrão
+	 * function fn    * callback para esta rota
+	 */
     public static function get($route, $fn) {
         self::setRoute('GET', $route, $fn);
     }
@@ -21,6 +26,13 @@ class Router {
         self::setRoute('UPDATE', $route, $fn);
     }
 
+	/** Função para armazenar rotas.
+	 * Deve ser usado apenas pelos "setters"
+	 * 
+	 * string   method * Método roteado (get, post, delete ou update)
+	 * string   route  * Rota a ser roteada :)
+	 * function fn     * Callback para a rota supracitada
+	 */
     private static function setRoute($method, $route, $fn) {
         $method = strtoupper($method);
 
@@ -36,7 +48,12 @@ class Router {
         );
     }
 
-
+	/** Route Caller
+	 * Função que chama uma determinada rota
+	 *
+	 * string method * Método usado na chamada
+	 * string url    * Path chamado
+	 */
     public static function route($method, $url) {
         $method = strtoupper($method);
         foreach (self::$routes[$method] as $route) {
@@ -44,10 +61,20 @@ class Router {
 				array_shift($match);
 				if (sizeof($match)) 
 	                $match = array_combine($route['vars'], $match);
-                call_user_func_array($route['fn'], $match);
+				call_user_func_array($route['fn'], $match);
             }
         }
         // route to default or (404)
     }
+
+	/** Retorno da rota
+	 * Função usada para retornar informações relativas a rota
+	 * Deve ser usada de dentro da callback
+	 *
+	 * array ret * Array com os dados a serem retornados
+	 */
+	public static function dispose($ret) {
+		die(json_encode($ret));
+	}
 
 }
