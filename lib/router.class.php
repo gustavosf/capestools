@@ -2,7 +2,7 @@
 
 class Router {
 
-    static $routes = array();
+    static private $routes = array();
 
     // route public setters
 	/** Funções auxiliares para cadastro de rotas
@@ -57,7 +57,7 @@ class Router {
     public static function route($method, $url) {
         $method = strtoupper($method);
         foreach (self::$routes[$method] as $route) {
-            if (preg_match("/{$route['route']}/i", $url, $match)) {
+            if (preg_match("/^{$route['route']}$/i", $url, $match)) {
 				array_shift($match);
 				if (sizeof($match)) 
 	                $match = array_combine($route['vars'], $match);
