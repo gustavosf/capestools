@@ -14,3 +14,4 @@
 
 require APL_DIR.'/areas.php';
 require APL_DIR.'/ies.php';
+require APL_DIR.'/trienal.php';
